@@ -1,10 +1,8 @@
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
@@ -13,21 +11,24 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idClient;
+    Long idClient;
 
-    private String nom;
+    String nom;
 
-    private String prenom;
+    String prenom;
 
-    private String email;
+    String email;
 
-    private String telephone;
+    String telephone;
 
-    private String numPermis;
+    String numPermis;
 
-    private LocalDate dateInscription;
+    LocalDate dateInscription;
 }

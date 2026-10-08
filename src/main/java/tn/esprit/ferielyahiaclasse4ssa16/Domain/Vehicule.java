@@ -1,10 +1,9 @@
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
+import ch.qos.logback.core.boolex.EvaluationException;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.math.BigDecimal;
 
@@ -14,29 +13,32 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@ToString
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Vehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idVehicule;
+    Long idVehicule;
 
     @Column(nullable = false, unique = true, length = 20)
-    private String immatriculation;
+    String immatriculation;
 
     @Column(nullable = false, length = 50)
-    private String marque;
+    String marque;
 
     @Column(nullable = false, length = 50)
-    private String modele;
+    String modele;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private CategorieVehicule categorie;
+    CategorieVehicule categorie;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal tarifJournalier;
+    BigDecimal tarifJournalier;
 
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private StatutVehicule statut;
+    StatutVehicule statut;
 }
