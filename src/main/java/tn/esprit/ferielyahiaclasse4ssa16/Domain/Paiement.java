@@ -1,9 +1,9 @@
+
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@ToString(exclude = "contrat")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Paiement {
 
@@ -22,9 +22,11 @@ public class Paiement {
     Long idPaiement;
 
     BigDecimal montant;
-
     LocalDate datePaiement;
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     ModePaiement modePaiement;
+
+    @ManyToOne
+    Contrat contrat;
 }

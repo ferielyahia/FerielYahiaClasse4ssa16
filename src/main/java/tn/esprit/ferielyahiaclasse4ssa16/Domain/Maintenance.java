@@ -1,9 +1,9 @@
+
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
 import java.time.LocalDate;
 
 @Entity
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@ToString(exclude = "vehicule")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Maintenance {
 
@@ -21,8 +21,9 @@ public class Maintenance {
     Long idMaintenance;
 
     LocalDate dateDebut;
-
     LocalDate dateFin;
-
     String description;
+
+    @ManyToOne
+    Vehicule vehicule;
 }

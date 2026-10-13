@@ -1,3 +1,4 @@
+
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
 import jakarta.persistence.*;
@@ -10,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@ToString(exclude = "agence")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Employe {
 
@@ -19,9 +20,11 @@ public class Employe {
     Long idEmploye;
 
     String nom;
-
     String prenom;
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     RoleEmploye role;
+
+    @ManyToOne
+    Agence agence;
 }

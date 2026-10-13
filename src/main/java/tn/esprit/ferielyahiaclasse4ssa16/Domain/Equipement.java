@@ -1,8 +1,10 @@
+
 package tn.esprit.ferielyahiaclasse4ssa16.Domain;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -10,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
+@ToString(exclude = "vehicules")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Equipement {
 
@@ -19,4 +21,7 @@ public class Equipement {
     Long idEquipement;
 
     String libelle;
+
+    @ManyToMany(mappedBy = "equipements")
+    Set<Vehicule> vehicules;
 }
